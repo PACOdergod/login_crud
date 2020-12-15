@@ -30,7 +30,7 @@ Widget _loginForm(Size size) {
           padding: EdgeInsets.symmetric(vertical: 30.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.0),
-            color: Colors.amber,
+            color: Colors.white,
             border: Border.all(color: Colors.black, width: 5.0),
           ),
           //
@@ -39,9 +39,44 @@ Widget _loginForm(Size size) {
               'Ingreso',
               style: TextStyle(fontSize: 20.0),
             ),
+            SizedBox(height: 20.0),
+            _loginEmail(),
+            _loginContrasena()
           ]),
         )
       ],
+    ),
+  );
+}
+
+Widget _loginEmail() {
+  return Container(
+    padding: EdgeInsets.symmetric(horizontal: 30.0),
+    child: TextField(
+      keyboardType: TextInputType.emailAddress,
+      decoration: InputDecoration(
+          icon: Icon(
+            Icons.alternate_email,
+            color: Colors.deepPurple,
+          ),
+          hintText: 'ejemplo@gmail.com',
+          labelText: 'Correro electronico'),
+    ),
+  );
+}
+
+Widget _loginContrasena() {
+  return Container(
+    padding: EdgeInsets.symmetric(horizontal: 30.0),
+    child: TextField(
+      obscureText: true,
+      keyboardType: TextInputType.emailAddress,
+      decoration: InputDecoration(
+          icon: Icon(
+            Icons.lock_open,
+            color: Colors.deepPurple,
+          ),
+          labelText: 'Contraseña'),
     ),
   );
 }
