@@ -46,7 +46,10 @@ Widget _loginForm(Size size) {
             SizedBox(height: 20.0),
             _loginBoton()
           ]),
-        )
+        ),
+        SizedBox(height: 20.0),
+        Text('Olvido contraseña'),
+        SizedBox(height: 50.0)
       ],
     ),
   );
