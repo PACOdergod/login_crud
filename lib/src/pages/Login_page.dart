@@ -22,7 +22,7 @@ Widget _loginForm(Size size) {
         //
         SafeArea(
             child: Container(
-          height: 200.0,
+          height: 180.0,
         )),
         //
         Container(
@@ -31,7 +31,7 @@ Widget _loginForm(Size size) {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.0),
             color: Colors.white,
-            border: Border.all(color: Colors.black, width: 5.0),
+            border: Border.all(color: Colors.black, width: 2.0),
           ),
           //
           child: Column(children: [
@@ -41,7 +41,10 @@ Widget _loginForm(Size size) {
             ),
             SizedBox(height: 20.0),
             _loginEmail(),
-            _loginContrasena()
+            SizedBox(height: 20.0),
+            _loginContrasena(),
+            SizedBox(height: 20.0),
+            _loginBoton()
           ]),
         )
       ],
@@ -77,6 +80,24 @@ Widget _loginContrasena() {
             color: Colors.deepPurple,
           ),
           labelText: 'Contraseña'),
+    ),
+  );
+}
+
+Widget _loginBoton() {
+  return RaisedButton(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+    color: Colors.deepPurple,
+    textColor: Colors.white,
+    //
+    onPressed: () {},
+    //
+    child: Container(
+      child: Text(
+        'Ingresar',
+        style: TextStyle(),
+      ),
+      padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 10.0),
     ),
   );
 }
