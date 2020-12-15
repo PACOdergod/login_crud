@@ -3,11 +3,47 @@ import 'package:flutter/material.dart';
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //
+    final size = MediaQuery.of(context).size;
+    //
+    //
     return Scaffold(
         body: Stack(
-      children: [_crearFondo(context)],
+      children: [_crearFondo(context), _loginForm(size)],
     ));
   }
+}
+
+Widget _loginForm(Size size) {
+  //
+  return SingleChildScrollView(
+    child: Column(
+      children: [
+        //
+        SafeArea(
+            child: Container(
+          height: 200.0,
+        )),
+        //
+        Container(
+          width: size.width * 0.80,
+          padding: EdgeInsets.symmetric(vertical: 30.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10.0),
+            color: Colors.amber,
+            border: Border.all(color: Colors.black, width: 5.0),
+          ),
+          //
+          child: Column(children: [
+            Text(
+              'Ingreso',
+              style: TextStyle(fontSize: 20.0),
+            ),
+          ]),
+        )
+      ],
+    ),
+  );
 }
 
 Widget _crearFondo(BuildContext context) {
