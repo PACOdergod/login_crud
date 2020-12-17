@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:form_app1/src/controllers/email_controller.dart';
+import 'package:form_app1/src/controllers/texto_controller.dart';
 
+//Controladores para los campos de texto
 final TextEditingController _emailController =
-    EmailController().emailController;
+    TextoController().emailController;
+final TextEditingController _passwordController =
+    TextoController().passwordController;
 
+//
+//
+//
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -14,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   void dispose() {
     // Limpia el controlador cuando el Widget se descarte
     _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
 
@@ -34,6 +41,8 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
+//
+//
 Widget _loginForm(
   Size size,
 ) {
@@ -98,6 +107,7 @@ Widget _loginContrasena() {
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 30.0),
     child: TextField(
+      controller: _passwordController,
       obscureText: true,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
@@ -118,6 +128,7 @@ Widget _loginBoton() {
     //
     onPressed: () {
       print(_emailController.text);
+      print(_passwordController.text);
     },
     //
     child: Container(
