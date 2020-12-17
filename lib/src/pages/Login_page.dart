@@ -1,20 +1,33 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  //
+  final _emailController = TextEditingController();
+  @override
+  void dispose() {
+    // Limpia el controlador cuando el Widget se descarte
+    _emailController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     //
     final size = MediaQuery.of(context).size;
     //
-    //
     return Scaffold(
         body: Stack(
-      children: [_crearFondo(context), _loginForm(size)],
+      children: [_crearFondo(context), _loginForm(size, _emailController)],
     ));
   }
 }
 
-Widget _loginForm(Size size) {
+Widget _loginForm(Size size, TextEditingController emailController) {
   //
   return SingleChildScrollView(
     child: Column(
@@ -40,11 +53,11 @@ Widget _loginForm(Size size) {
               style: TextStyle(fontSize: 20.0),
             ),
             SizedBox(height: 20.0),
-            _loginEmail(),
+            _loginEmail(emailController),
             SizedBox(height: 20.0),
             _loginContrasena(),
             SizedBox(height: 20.0),
-            _loginBoton()
+            _loginBoton(emailController)
           ]),
         ),
         SizedBox(height: 20.0),
@@ -55,11 +68,12 @@ Widget _loginForm(Size size) {
   );
 }
 
-Widget _loginEmail() {
+Widget _loginEmail(TextEditingController emailController) {
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 30.0),
     child: TextField(
       keyboardType: TextInputType.emailAddress,
+      controller: emailController,
       decoration: InputDecoration(
           icon: Icon(
             Icons.alternate_email,
@@ -87,13 +101,15 @@ Widget _loginContrasena() {
   );
 }
 
-Widget _loginBoton() {
+Widget _loginBoton(TextEditingController emailController) {
   return RaisedButton(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
     color: Colors.deepPurple,
     textColor: Colors.white,
     //
-    onPressed: () {},
+    onPressed: () {
+      print(emailController.text);
+    },
     //
     child: Container(
       child: Text(
