@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:form_app1/src/controllers/texto_controller.dart';
+import 'package:form_app1/src/controllers/login_controller.dart';
 
 //Controladores para los campos de texto
 final TextEditingController _emailController =
-    TextoController().emailController;
+    LoginController().emailController;
 final TextEditingController _passwordController =
-    TextoController().passwordController;
+    LoginController().passwordController;
 
-//
 //
 //
 class LoginPage extends StatefulWidget {
@@ -30,21 +29,14 @@ class _LoginPageState extends State<LoginPage> {
     //
     return Scaffold(
         body: Stack(
-      children: [
-        _crearFondo(context),
-        _loginForm(
-          size,
-        )
-      ],
+      children: [_crearFondo(context), _loginForm(size, context)],
     ));
   }
 }
 
 //
 //
-Widget _loginForm(
-  Size size,
-) {
+Widget _loginForm(Size size, BuildContext context) {
   //
   return SingleChildScrollView(
     child: Column(
@@ -74,7 +66,7 @@ Widget _loginForm(
             SizedBox(height: 20.0),
             _loginContrasena(),
             SizedBox(height: 20.0),
-            _loginBoton()
+            _loginBoton(context)
           ]),
         ),
         SizedBox(height: 20.0),
@@ -119,15 +111,16 @@ Widget _loginContrasena() {
   );
 }
 
-Widget _loginBoton() {
+Widget _loginBoton(BuildContext context) {
   return RaisedButton(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
     color: Colors.deepPurple,
     textColor: Colors.white,
     //
     onPressed: () {
-      print(_emailController.text);
-      print(_passwordController.text);
+      // print(_emailController.text);
+      // print(_passwordController.text);
+      FocusScope.of(context).requestFocus(new FocusNode());
     },
     //
     child: Container(
@@ -141,7 +134,6 @@ Widget _loginBoton() {
 }
 
 Widget _crearFondo(BuildContext context) {
-  //
   //
   final size = MediaQuery.of(context).size;
   //
