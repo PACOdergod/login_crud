@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:form_app1/src/controllers/email_controller.dart';
+
+final TextEditingController _emailController =
+    EmailController().emailController;
 
 class LoginPage extends StatefulWidget {
   @override
@@ -7,8 +11,6 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   //
-  final _emailController = TextEditingController();
-  @override
   void dispose() {
     // Limpia el controlador cuando el Widget se descarte
     _emailController.dispose();
@@ -22,12 +24,19 @@ class _LoginPageState extends State<LoginPage> {
     //
     return Scaffold(
         body: Stack(
-      children: [_crearFondo(context), _loginForm(size, _emailController)],
+      children: [
+        _crearFondo(context),
+        _loginForm(
+          size,
+        )
+      ],
     ));
   }
 }
 
-Widget _loginForm(Size size, TextEditingController emailController) {
+Widget _loginForm(
+  Size size,
+) {
   //
   return SingleChildScrollView(
     child: Column(
@@ -53,11 +62,11 @@ Widget _loginForm(Size size, TextEditingController emailController) {
               style: TextStyle(fontSize: 20.0),
             ),
             SizedBox(height: 20.0),
-            _loginEmail(emailController),
+            _loginEmail(),
             SizedBox(height: 20.0),
             _loginContrasena(),
             SizedBox(height: 20.0),
-            _loginBoton(emailController)
+            _loginBoton()
           ]),
         ),
         SizedBox(height: 20.0),
@@ -68,12 +77,12 @@ Widget _loginForm(Size size, TextEditingController emailController) {
   );
 }
 
-Widget _loginEmail(TextEditingController emailController) {
+Widget _loginEmail() {
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 30.0),
     child: TextField(
       keyboardType: TextInputType.emailAddress,
-      controller: emailController,
+      controller: _emailController,
       decoration: InputDecoration(
           icon: Icon(
             Icons.alternate_email,
@@ -101,14 +110,14 @@ Widget _loginContrasena() {
   );
 }
 
-Widget _loginBoton(TextEditingController emailController) {
+Widget _loginBoton() {
   return RaisedButton(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
     color: Colors.deepPurple,
     textColor: Colors.white,
     //
     onPressed: () {
-      print(emailController.text);
+      print(_emailController.text);
     },
     //
     child: Container(
