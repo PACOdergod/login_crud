@@ -18,7 +18,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   //
   void dispose() {
-    // Limpia el controlador cuando el Widget se descarte
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
