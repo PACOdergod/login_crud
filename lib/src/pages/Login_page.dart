@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:form_app1/src/controllers/login_controller.dart';
+import 'package:form_app1/src/pages/home_page.dart';
 
 //Controladores para los campos de texto
 final TextEditingController _emailController =
@@ -121,6 +122,8 @@ Widget _loginBoton(BuildContext context) {
       // print(_emailController.text);
       // print(_passwordController.text);
       FocusScope.of(context).requestFocus(new FocusNode());
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => HomePage()));
     },
     //
     child: Container(
