@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:form_app1/src/bloc/login_bloc.dart';
+import 'package:form_app1/src/bloc/provider.dart';
 import 'package:form_app1/src/controllers/login_controller.dart';
 import 'package:form_app1/src/pages/home_page.dart';
 
@@ -38,6 +40,8 @@ class _LoginPageState extends State<LoginPage> {
 //
 //
 Widget _loginForm(Size size, BuildContext context) {
+  final bloc = Provider.of(context);
+
   //
   return SingleChildScrollView(
     child: Column(
@@ -63,9 +67,9 @@ Widget _loginForm(Size size, BuildContext context) {
               style: TextStyle(fontSize: 20.0),
             ),
             SizedBox(height: 20.0),
-            _loginEmail(),
+            _loginEmail(bloc),
             SizedBox(height: 20.0),
-            _loginContrasena(),
+            _loginContrasena(bloc),
             SizedBox(height: 20.0),
             _loginBoton(context)
           ]),
@@ -78,12 +82,12 @@ Widget _loginForm(Size size, BuildContext context) {
   );
 }
 
-Widget _loginEmail() {
+Widget _loginEmail(LoginBloc bloc) {
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 30.0),
     child: TextField(
       keyboardType: TextInputType.emailAddress,
-      controller: _emailController,
+      // controller: _emailController,
       decoration: InputDecoration(
           icon: Icon(
             Icons.alternate_email,
@@ -95,7 +99,7 @@ Widget _loginEmail() {
   );
 }
 
-Widget _loginContrasena() {
+Widget _loginContrasena(LoginBloc bloc) {
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 30.0),
     child: TextField(
